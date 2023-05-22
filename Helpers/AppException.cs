@@ -3,8 +3,8 @@ using System.Globalization;
 
 namespace BudgetBucketsAPI.Helpers
 {
-	public class AppException : Exception
-	{
+    public class AppException : Exception
+    {
         public AppException() : base() { }
 
         public AppException(string message) : base(message) { }
