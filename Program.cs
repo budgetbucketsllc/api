@@ -25,6 +25,7 @@ services.AddControllers().AddJsonOptions(x =>
     // ignore omitted parameters on models to enable optional params (e.g. User update)
     x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
+
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // configure DI for application services
@@ -50,16 +51,15 @@ app.UseAuthorization();
 app.MapControllers();
 
 // configure HTTP request pipeline
-    // global cors policy
-    app.UseCors(x => x
-        .AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader());
+// global cors policy
+app.UseCors(x => x
+    .AllowAnyOrigin()
+     .AllowAnyMethod()
+     .AllowAnyHeader());
 
-    // global error handler
-    app.UseMiddleware<ErrorHandlerMiddleware>();
+// global error handler
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
-    app.Run();
+app.Run("http://localhost:4000");
 
 
-    
