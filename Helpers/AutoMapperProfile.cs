@@ -5,7 +5,7 @@ using BudgetBucketsAPI.Models.Users;
 
 namespace BudgetBucketsAPI.Helpers
 {
-    public class AutoMapperProfile : Profile
+    public class AutoMapperProfile : AutoMapper.Profile
     {
         public AutoMapperProfile()
         {
