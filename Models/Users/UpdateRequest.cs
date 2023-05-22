@@ -6,19 +6,19 @@ namespace BudgetBucketsAPI.Models.Users
 {
     public class UpdateRequest
     {
-        public string Title { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
 
         [EnumDataType(typeof(Role))]
         public string Role { get; set; }
 
         [EmailAddress]
-        public string Email { get; set; }
+        public string EmailAddress { get; set; }
+
+        public DateTime UpdatedAt { get; set; }
 
         // treat empty string as null for password fields to 
         // make them optional in front end apps
         private string _password;
+
         [MinLength(6)]
         public string Password
         {

@@ -7,21 +7,14 @@ namespace BudgetBucketsAPI.Models.Users
     public class CreateRequest
     {
         [Required]
-        public string Title { get; set; }
+        public string EmailAddress { get; set; }
 
         [Required]
-        public string FirstName { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Required]
         [EnumDataType(typeof(Role))]
         public string Role { get; set; }
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
 
         [Required]
         [MinLength(6)]
