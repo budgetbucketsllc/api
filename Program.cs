@@ -60,6 +60,6 @@ app.UseCors(x => x
 // global error handler
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
-app.Run("http://localhost:4000");
+app.Run();
 
 
