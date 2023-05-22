@@ -1,4 +1,8 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using BudgetBucketsAPI.Helpers;
+using BudgetBucketsAPI.Services;
+using System.Text.Json.Serialization;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -7,7 +11,30 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// add services to DI container
+var services = builder.Services;
+var env = builder.Environment;
+
+services.AddDbContext<DataContext>();
+services.AddCors();
+services.AddControllers().AddJsonOptions(x =>
+{
+    // serialize enums as strings in api responses (e.g. Role)
+    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+
+    // ignore omitted parameters on models to enable optional params (e.g. User update)
+    x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});
+services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// configure DI for application services
+services.AddScoped<IUserService, UserService>();
+
 var app = builder.Build();
+
+
+// Add SQL Database connection
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -22,5 +49,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+// configure HTTP request pipeline
+    // global cors policy
+    app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 
+    // global error handler
+    app.UseMiddleware<ErrorHandlerMiddleware>();
+
+    app.Run();
+
+
+    
