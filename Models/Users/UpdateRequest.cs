@@ -8,10 +8,10 @@ namespace BudgetBucketsAPI.Models.Users
     {
 
         [EnumDataType(typeof(Role))]
-        public string Role { get; set; }
+        public string Role { get; set; } = String.Empty;
 
         [EmailAddress]
-        public string EmailAddress { get; set; }
+        public string EmailAddress { get; set; } = String.Empty;
 
         public DateTime UpdatedAt { get; set; }
 
