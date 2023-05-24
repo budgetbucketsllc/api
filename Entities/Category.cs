@@ -13,7 +13,6 @@ namespace BudgetBucketsAPI.Entities
 		public int AmountSpent {get; set;}
 		[NotMapped]
 		public int AmountRemaining {get; set;}
-		public bool IsSavings {get; set;}
 	}
 }
 
