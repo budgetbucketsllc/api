@@ -11,7 +11,6 @@ namespace BudgetBucketsAPI.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public Role Role { get; set; }
-
     }
 }
 

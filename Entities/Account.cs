@@ -3,12 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BudgetBucketsAPI.Entities
 {
-	public class Budget
+	public class Account
 	{
 		public int Id {get; set;}
 		[ForeignKey("User")]
 		public int UserId {get; set;}
-		public DateOnly Timeframe {get; set;}
+		public string Name {get; set;} = String.Empty;
+		public int AmountTotal {get; set;}
+		public AccountType Type {get; set;}
 	}
 }
 
