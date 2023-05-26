@@ -7,12 +7,12 @@ namespace BudgetBucketsAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
         private IUserService _userService;
         private IMapper _mapper;
 
-        public UsersController(
+        public UserController(
             IUserService userService,
             IMapper mapper)
         {

@@ -46,10 +46,17 @@ namespace BudgetBucketsAPI.Services
 
         public void Create(CreateRequestAccount model, int userId)
         {
+            UserService userService = new UserService(_context, _mapper);
+            User user = userService.GetById(userId);
+            if (user == null)
+            {
+                throw new AppException("Account cannot be created. User does not exist.");
+            }
+
             List<Account> accounts = getAccountsByUserId(userId);
 
             if (accounts.Any(x => x.Name == model.Name))
-                throw new AppException("Adccount with the name '" + model.Name + "' already exists");
+                throw new AppException("Account with the name '" + model.Name + "' already exists");
 
             Account account = _mapper.Map<Account>(model);
 

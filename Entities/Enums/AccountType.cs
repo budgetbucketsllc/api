@@ -4,7 +4,7 @@ namespace BudgetBucketsAPI.Entities
     public enum AccountType
     {
         CreditCard,
-        Checkings,
+        Checking,
         Cash,
         Savings
     }
