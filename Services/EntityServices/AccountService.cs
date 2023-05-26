@@ -8,7 +8,12 @@ namespace BudgetBucketsAPI.Services
 {
     public interface IAccountService
     {
-
+        IEnumerable<Account> GetAll();
+        Account GetById(int id);
+        List<Account> GetAllAccountsByUserId(int userId);
+        void Create(CreateRequestAccount model, int userId);
+        void Update(int userId, int id, UpdateRequestAccount model);
+        void Delete(int id);
     }
 
     public class AccountService : IAccountService
@@ -52,7 +57,7 @@ namespace BudgetBucketsAPI.Services
             _context.SaveChangesAsync();
         }
 
-        public void Update(int id, UpdateRequestAccount model, int userId)
+        public void Update(int userId, int id, UpdateRequestAccount model)
         {
             Account account = getAccount(id);
 
