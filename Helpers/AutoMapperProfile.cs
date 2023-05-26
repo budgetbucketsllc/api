@@ -45,9 +45,6 @@ namespace BudgetBucketsAPI.Helpers
                         return true;
                     }
                 ));
-
-
-
         }
     }
 }

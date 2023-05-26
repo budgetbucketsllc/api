@@ -51,7 +51,7 @@ namespace BudgetBucketsAPI.Services
 
             // save user
             _context.Users.Add(user);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
 
         public void Update(int id, UpdateRequestUser model)
@@ -68,14 +68,14 @@ namespace BudgetBucketsAPI.Services
             user.UpdatedAt = DateTime.Now;
 
             _context.Users.Update(user);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
         {
             User user = getUser(id);
             _context.Users.Remove(user);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
 
         // helper methods

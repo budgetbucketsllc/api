@@ -49,7 +49,29 @@ namespace BudgetBucketsAPI.Services
             Account account = _mapper.Map<Account>(model);
 
             _context.Accounts.Add(account);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
+        }
+
+        public void Update(int id, UpdateRequestAccount model, int userId)
+        {
+            Account account = getAccount(id);
+
+            List<Account> accounts = getAccountsByUserId(userId);
+
+            if (accounts.Any(x => x.Name == model.Name))
+                throw new AppException("Adccount with the name '" + model.Name + "' already exists");
+
+            _mapper.Map(model, account);
+
+            _context.Accounts.Update(account);
+            _context.SaveChangesAsync();
+        }
+
+        public void Delete (int id)
+        {
+            Account account = getAccount(id);
+            _context.Accounts.Remove(account);
+            _context.SaveChangesAsync();
         }
 
         private List<Account> getAccountsByUserId(int userId)
