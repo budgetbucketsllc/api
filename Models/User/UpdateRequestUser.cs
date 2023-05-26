@@ -6,14 +6,13 @@ namespace BudgetBucketsAPI.Models.Users
 {
     public class UpdateRequestUser
     {
-
-        [EnumDataType(typeof(Role))]
-        public string Role { get; set; } = String.Empty;
-
         [EmailAddress]
         public string EmailAddress { get; set; } = String.Empty;
 
         public DateTime UpdatedAt { get; set; }
+
+        [EnumDataType(typeof(Role))]
+        public string Role { get; set; } = String.Empty;
 
         // treat empty string as null for password fields to 
         // make them optional in front end apps
@@ -35,7 +34,6 @@ namespace BudgetBucketsAPI.Models.Users
         }
 
         // helpers
-
         private string replaceEmptyWithNull(string value)
         {
             // replace empty string with null to make field optional

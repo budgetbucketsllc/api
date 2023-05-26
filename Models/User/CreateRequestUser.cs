@@ -13,6 +13,9 @@ namespace BudgetBucketsAPI.Models.Users
         public DateTime CreatedAt { get; set; }
 
         [Required]
+        public DateTime UpdatedAt { get; set; }
+
+        [Required]
         [EnumDataType(typeof(Role))]
         public string Role { get; set; } = String.Empty;
 

@@ -45,7 +45,7 @@ namespace BudgetBucketsAPI.Services
                 throw new AppException("User with the email '" + model.EmailAddress + "' already exists");
 
             // map model to new user object
-            var user = _mapper.Map<User>(model);
+            User user = _mapper.Map<User>(model);
 
             user.CreatedAt = DateTime.Now;
 
@@ -56,7 +56,7 @@ namespace BudgetBucketsAPI.Services
 
         public void Update(int id, UpdateRequestUser model)
         {
-            var user = getUser(id);
+            User user = getUser(id);
 
             // validate
             if (model.EmailAddress != user.EmailAddress && _context.Users.Any(x => x.EmailAddress == model.EmailAddress))
@@ -73,7 +73,7 @@ namespace BudgetBucketsAPI.Services
 
         public void Delete(int id)
         {
-            var user = getUser(id);
+            User user = getUser(id);
             _context.Users.Remove(user);
             _context.SaveChanges();
         }
@@ -82,7 +82,7 @@ namespace BudgetBucketsAPI.Services
 
         private User getUser(int id)
         {
-            var user = _context.Users.Find(id);
+            User? user = _context.Users.Find(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
         }

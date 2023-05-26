@@ -2,7 +2,7 @@ using System;
 using AutoMapper;
 using BudgetBucketsAPI.Entities;
 using BudgetBucketsAPI.Helpers;
-using BudgetBucketsAPI.Models.Users;
+using BudgetBucketsAPI.Models.Account;
 
 namespace BudgetBucketsAPI.Services
 {
@@ -34,9 +34,14 @@ namespace BudgetBucketsAPI.Services
             return getAccount(id);
         }
 
-        public List<Account> GetAllAccountsByUserId(int user_id)
+        public void Create(CreateRequestAccount account, int userId)
         {
-            var accounts = _context.Accounts.Where(account => account.UserId == user_id).ToList();
+
+        }
+
+        public List<Account> GetAllAccountsByUserId(int userId)
+        {
+            var accounts = _context.Accounts.Where(account => account.UserId == userId).ToList();
             if (accounts == null) throw new KeyNotFoundException("Accounts not found");
             return accounts;
         }
