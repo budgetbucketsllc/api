@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BudgetBucketsAPI.Models.Users
 {
-    public class UpdateRequest
+    public class UpdateRequestUser
     {
 
         [EnumDataType(typeof(Role))]

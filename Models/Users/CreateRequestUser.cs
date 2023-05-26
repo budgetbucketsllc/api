@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BudgetBucketsAPI.Models.Users
 {
-    public class CreateRequest
+    public class CreateRequestUser
     {
         [Required]
         public string EmailAddress { get; set; } = String.Empty;

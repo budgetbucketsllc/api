@@ -10,8 +10,8 @@ namespace BudgetBucketsAPI.Services
     {
         IEnumerable<User> GetAll();
         User GetById(int id);
-        void Create(CreateRequest model);
-        void Update(int id, UpdateRequest model);
+        void Create(CreateRequestUser model);
+        void Update(int id, UpdateRequestUser model);
         void Delete(int id);
     }
 
@@ -38,7 +38,7 @@ namespace BudgetBucketsAPI.Services
             return getUser(id);
         }
 
-        public void Create(CreateRequest model)
+        public void Create(CreateRequestUser model)
         {
             // validate
             if (_context.Users.Any(x => x.EmailAddress == model.EmailAddress))
@@ -54,7 +54,7 @@ namespace BudgetBucketsAPI.Services
             _context.SaveChanges();
         }
 
-        public void Update(int id, UpdateRequest model)
+        public void Update(int id, UpdateRequestUser model)
         {
             var user = getUser(id);
 
