@@ -21,10 +21,18 @@
     <None Remove="Controllers\" />
     <None Remove="Services\" />
     <None Remove="Models\" />
+    <None Remove="Entities\Enums\" />
+    <None Remove="Services\EntityServices\" />
+    <None Remove="Services\FunctionalServices\" />
+    <None Remove="Models\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Services\" />
     <Folder Include="Models\" />
+    <Folder Include="Entities\Enums\" />
+    <Folder Include="Services\EntityServices\" />
+    <Folder Include="Services\FunctionalServices\" />
+    <Folder Include="Models\Account\" />
   </ItemGroup>
 </Project>

@@ -10,8 +10,8 @@ namespace BudgetBucketsAPI.Services
     {
         IEnumerable<User> GetAll();
         User GetById(int id);
-        void Create(CreateRequest model);
-        void Update(int id, UpdateRequest model);
+        void Create(CreateRequestUser model);
+        void Update(int id, UpdateRequestUser model);
         void Delete(int id);
     }
 
@@ -38,46 +38,51 @@ namespace BudgetBucketsAPI.Services
             return getUser(id);
         }
 
-        public void Create(CreateRequest model)
+        public void Create(CreateRequestUser model)
         {
             // validate
-            if (_context.Users.Any(x => x.Email == model.Email))
-                throw new AppException("User with the email '" + model.Email + "' already exists");
+            if (_context.Users.Any(x => x.EmailAddress == model.EmailAddress))
+                throw new AppException("User with the email '" + model.EmailAddress + "' already exists");
 
             // map model to new user object
-            var user = _mapper.Map<User>(model);
+            User user = _mapper.Map<User>(model);
+
+            user.CreatedAt = DateTime.Now;
 
             // save user
             _context.Users.Add(user);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
 
-        public void Update(int id, UpdateRequest model)
+        public void Update(int id, UpdateRequestUser model)
         {
-            var user = getUser(id);
+            User user = getUser(id);
 
             // validate
-            if (model.Email != user.Email && _context.Users.Any(x => x.Email == model.Email))
-                throw new AppException("User with the email '" + model.Email + "' already exists");
+            if (model.EmailAddress != user.EmailAddress && _context.Users.Any(x => x.EmailAddress == model.EmailAddress))
+                throw new AppException("User with the email '" + model.EmailAddress + "' already exists");
 
             // copy model to user and save
             _mapper.Map(model, user);
+
+            user.UpdatedAt = DateTime.Now;
+
             _context.Users.Update(user);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
         {
-            var user = getUser(id);
+            User user = getUser(id);
             _context.Users.Remove(user);
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
 
         // helper methods
 
         private User getUser(int id)
         {
-            var user = _context.Users.Find(id);
+            User? user = _context.Users.Find(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
         }

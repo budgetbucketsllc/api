@@ -7,12 +7,12 @@ namespace BudgetBucketsAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
         private IUserService _userService;
         private IMapper _mapper;
 
-        public UsersController(
+        public UserController(
             IUserService userService,
             IMapper mapper)
         {
@@ -35,14 +35,14 @@ namespace BudgetBucketsAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateRequest model)
+        public IActionResult Create(CreateRequestUser model)
         {
             _userService.Create(model);
             return Ok(new { message = "User created" });
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, UpdateRequest model)
+        [HttpPatch("{id}")]
+        public IActionResult Update(int id, UpdateRequestUser model)
         {
             _userService.Update(id, model);
             return Ok(new { message = "User updated" });

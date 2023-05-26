@@ -4,21 +4,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BudgetBucketsAPI.Models.Users
 {
-    public class UpdateRequest
+    public class UpdateRequestUser
     {
-        public string Title { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        [EmailAddress]
+        public string EmailAddress { get; set; } = String.Empty;
+
+        public DateTime UpdatedAt { get; set; }
 
         [EnumDataType(typeof(Role))]
-        public string Role { get; set; }
-
-        [EmailAddress]
-        public string Email { get; set; }
+        public string Role { get; set; } = String.Empty;
 
         // treat empty string as null for password fields to 
         // make them optional in front end apps
         private string _password;
+
         [MinLength(6)]
         public string Password
         {
@@ -35,7 +34,6 @@ namespace BudgetBucketsAPI.Models.Users
         }
 
         // helpers
-
         private string replaceEmptyWithNull(string value)
         {
             // replace empty string with null to make field optional
