@@ -30,6 +30,7 @@ services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // configure DI for application services
 services.AddScoped<IUserService, UserService>();
+services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 
