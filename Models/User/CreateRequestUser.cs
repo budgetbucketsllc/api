@@ -7,6 +7,7 @@ namespace BudgetBucketsAPI.Models.Users
     public class CreateRequestUser
     {
         [Required]
+        [EmailAddress]
         public string EmailAddress { get; set; } = String.Empty;
 
         [Required]

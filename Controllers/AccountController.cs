@@ -28,31 +28,31 @@ namespace BudgetBucketsAPI.Controllers
 			return Ok(accounts);
 		}
 
-		[HttpGet("{id}")]
+		[HttpGet("id/{id}")]
 		public IActionResult GetById(int id)
 		{
 			var account = _accountService.GetById(id);
 			return Ok(account);
 		}
 
-		[HttpGet("{userid}")]
-		public IActionResult GetAllAccountsByUserId(int userId)
+		[HttpGet("userid/{userid}")]
+		public IActionResult GetAllAccountsByUserId(int userid)
 		{
-			var accounts = _accountService.GetAllAccountsByUserId(userId);
+			var accounts = _accountService.GetAllAccountsByUserId(userid);
 			return Ok(accounts);
 		}
 
 		[HttpPost]
-		public IActionResult Create(CreateRequestAccount model, int userId)
+		public IActionResult Create(CreateRequestAccount model, int userid)
 		{
-			_accountService.Create(model, userId);
+			_accountService.Create(model, userid);
 			return Ok(new { message = "Account created" });
 		}
 
-		[HttpPut("{userid}/{id}")]
-		public IActionResult Update(int userId, int id, UpdateRequestAccount model)
+		[HttpPut("update/{userid}/{id}")]
+		public IActionResult Update(int userid, int id, UpdateRequestAccount model)
 		{
-			_accountService.Update(userId, id, model);
+			_accountService.Update(userid, id, model);
 			return Ok(new { message = "Account updated" });
 		}
 
