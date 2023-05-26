@@ -59,6 +59,7 @@ namespace BudgetBucketsAPI.Services
                 throw new AppException("Account with the name '" + model.Name + "' already exists");
 
             Account account = _mapper.Map<Account>(model);
+            account.UserId = userId;
 
             _context.Accounts.Add(account);
             _context.SaveChangesAsync();
@@ -74,6 +75,7 @@ namespace BudgetBucketsAPI.Services
                 throw new AppException("Adccount with the name '" + model.Name + "' already exists");
 
             _mapper.Map(model, account);
+            account.UserId = userId;
 
             _context.Accounts.Update(account);
             _context.SaveChangesAsync();

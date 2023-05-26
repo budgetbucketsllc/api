@@ -6,7 +6,6 @@ namespace BudgetBucketsAPI.Models.Account
 {
 	public class UpdateRequestAccount
 	{
-
 		public string Name { get; set; } = String.Empty;
 
 		public int AmountTotal { get; set; }

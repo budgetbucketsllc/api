@@ -7,9 +7,6 @@ namespace BudgetBucketsAPI.Models.Account
 	public class CreateRequestAccount
 	{
 		[Required]
-		public int UserId { get; set; }
-
-		[Required]
 		public string Name { get; set; } = String.Empty;
 
 		[Required]

@@ -49,7 +49,7 @@ namespace BudgetBucketsAPI.Controllers
 			return Ok(new { message = "Account created" });
 		}
 
-		[HttpPut("update/{userid}/{id}")]
+		[HttpPatch("update/{userid}/{id}")]
 		public IActionResult Update(int userid, int id, UpdateRequestAccount model)
 		{
 			_accountService.Update(userid, id, model);

@@ -41,7 +41,7 @@ namespace BudgetBucketsAPI.Controllers
             return Ok(new { message = "User created" });
         }
 
-        [HttpPut("{id}")]
+        [HttpPatch("{id}")]
         public IActionResult Update(int id, UpdateRequestUser model)
         {
             _userService.Update(id, model);
