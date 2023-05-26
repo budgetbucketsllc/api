@@ -34,14 +34,27 @@ namespace BudgetBucketsAPI.Services
             return getAccount(id);
         }
 
-        public void Create(CreateRequestAccount account, int userId)
-        {
-
-        }
-
         public List<Account> GetAllAccountsByUserId(int userId)
         {
-            var accounts = _context.Accounts.Where(account => account.UserId == userId).ToList();
+            return getAccountsByUserId(userId);
+        }
+
+        public void Create(CreateRequestAccount model, int userId)
+        {
+            List<Account> accounts = getAccountsByUserId(userId);
+
+            if (accounts.Any(x => x.Name == model.Name))
+                throw new AppException("Adccount with the name '" + model.Name + "' already exists");
+
+            Account account = _mapper.Map<Account>(model);
+
+            _context.Accounts.Add(account);
+            _context.SaveChanges();
+        }
+
+        private List<Account> getAccountsByUserId(int userId)
+        {
+            List<Account> accounts = _context.Accounts.Where(account => account.UserId == userId).ToList();
             if (accounts == null) throw new KeyNotFoundException("Accounts not found");
             return accounts;
         }
@@ -49,7 +62,7 @@ namespace BudgetBucketsAPI.Services
 
         private Account getAccount(int id)
         {
-            var account = _context.Accounts.Find(id);
+            Account? account = _context.Accounts.Find(id);
             if (account == null) throw new KeyNotFoundException("Account not found");
             return account;
         }
