@@ -39,8 +39,8 @@ namespace BudgetBucketsAPI.Helpers
                         if (prop == null) return false;
                         if (prop.GetType() == typeof(string) && string.IsNullOrEmpty((string)prop)) return false;
 
-                        // ignore null role
-                        if (x.DestinationMember.Name == "Role" && src.Type == null) return false;
+                        // ignore null type
+                        if (x.DestinationMember.Name == "Type" && src.Type == null) return false;
 
                         return true;
                     }
