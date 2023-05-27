@@ -60,6 +60,7 @@ namespace BudgetBucketsAPI.Services
 
             Account account = _mapper.Map<Account>(model);
             account.UserId = userId;
+            account.AmountTotal = Math.Round(model.AmountTotal, 2);
 
             _context.Accounts.Add(account);
 
@@ -77,6 +78,7 @@ namespace BudgetBucketsAPI.Services
 
             _mapper.Map(model, account);
             account.UserId = userId;
+            account.AmountTotal = Math.Round(model.AmountTotal, 2);
 
             _context.Accounts.Update(account);
 
