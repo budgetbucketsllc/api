@@ -62,7 +62,7 @@ namespace BudgetBucketsAPI.Services
             account.UserId = userId;
 
             _context.Accounts.Add(account);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void Update(int userId, int id, UpdateRequestAccount model)
@@ -78,14 +78,14 @@ namespace BudgetBucketsAPI.Services
             account.UserId = userId;
 
             _context.Accounts.Update(account);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void Delete (int id)
         {
             Account account = getAccount(id);
             _context.Accounts.Remove(account);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         private List<Account> getAccountsByUserId(int userId)
