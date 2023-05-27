@@ -9,7 +9,7 @@ namespace BudgetBucketsAPI.Entities
 		[ForeignKey("User")]
 		public int UserId { get; set; }
 		public string Name { get; set; } = String.Empty;
-		public int AmountTotal { get; set; }
+		public decimal AmountTotal { get; set; }
 		public AccountType Type { get; set; }
 	}
 }

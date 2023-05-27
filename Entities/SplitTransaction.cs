@@ -16,7 +16,7 @@ namespace BudgetBucketsAPI.Entities
 		public int BucketId {get; set;}
 		[ForeignKey("CategoryBucket")]
 		public int CategoryBucketId {get; set;}
-		public int SplitAmount {get; set;}
+		public decimal SplitAmount {get; set;}
 	}
 }
 

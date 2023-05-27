@@ -8,7 +8,7 @@ namespace BudgetBucketsAPI.Models.Account
 	{
 		public string Name { get; set; } = String.Empty;
 
-		public int AmountTotal { get; set; }
+		public decimal AmountTotal { get; set; }
 
 		[EnumDataType(typeof(AccountType))]
 		public string Type { get; set; } = String.Empty;
