@@ -9,10 +9,10 @@ namespace BudgetBucketsAPI.Entities
 		[ForeignKey("Category")]
 		public int CategoryId {get; set;}
 		public string Name {get; set;} = String.Empty;
-		public int AmountPlanned {get; set;}
-		public int AmountSpent {get; set;}
+		public decimal AmountPlanned {get; set;}
+		public decimal AmountSpent {get; set;}
 		[NotMapped]
-		public int AmountRemaining {get; set;}
+		public decimal AmountRemaining {get; set;}
 		public bool IsFavorite {get; set;}
 		public string Note {get; set;} = String.Empty;
 		public DateOnly DueDate {get; set;}

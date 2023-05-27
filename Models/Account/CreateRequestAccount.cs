@@ -10,7 +10,7 @@ namespace BudgetBucketsAPI.Models.Account
 		public string Name { get; set; } = String.Empty;
 
 		[Required]
-		public int AmountTotal { get; set; }
+		public decimal AmountTotal { get; set; }
 
 		[Required]
 		[EnumDataType(typeof(AccountType))]

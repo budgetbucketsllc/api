@@ -15,8 +15,9 @@ namespace BudgetBucketsAPI.Helpers
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            // in memory database used for simplicity, change to a real db for production applications
-            options.UseInMemoryDatabase("TestDb");
+            // connect to mysql with connection string from app settings
+            var connectionString = Configuration.GetConnectionString("database");
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
 
         public DbSet<Account> Accounts {get; set;}
