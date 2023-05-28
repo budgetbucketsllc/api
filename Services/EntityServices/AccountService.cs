@@ -4,7 +4,7 @@ using BudgetBucketsAPI.Entities;
 using BudgetBucketsAPI.Helpers;
 using BudgetBucketsAPI.Models.Account;
 
-namespace BudgetBucketsAPI.Services
+namespace BudgetBucketsAPI.Services.EntityServices
 {
     public interface IAccountService
     {

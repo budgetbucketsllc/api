@@ -2,6 +2,7 @@
 using AutoMapper;
 using BudgetBucketsAPI.Entities;
 using BudgetBucketsAPI.Models.Account;
+using BudgetBucketsAPI.Models.Profile;
 using BudgetBucketsAPI.Models.Users;
 
 namespace BudgetBucketsAPI.Helpers
@@ -10,10 +11,8 @@ namespace BudgetBucketsAPI.Helpers
     {
         public AutoMapperProfile()
         {
-            // CreateRequest -> User
             CreateMap<CreateRequestUser, User>();
 
-            // UpdateRequest -> User
             CreateMap<UpdateRequestUser, User>()
                 .ForAllMembers(x => x.Condition(
                     (src, dest, prop) =>
@@ -41,6 +40,20 @@ namespace BudgetBucketsAPI.Helpers
 
                         // ignore null type
                         if (x.DestinationMember.Name == "Type" && src.Type == null) return false;
+
+                        return true;
+                    }
+                ));
+
+            CreateMap<CreateRequestProfile, Entities.Profile>();
+
+            CreateMap<UpdateRequestProfile, Entities.Profile>()
+                .ForAllMembers(x => x.Condition(
+                    (src, dest, prop) =>
+                    {
+                        // ignore both null & empty string properties
+                        if (prop == null) return false;
+                        if (prop.GetType() == typeof(string) && string.IsNullOrEmpty((string)prop)) return false;
 
                         return true;
                     }

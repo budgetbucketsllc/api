@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using BudgetBucketsAPI.Models.Account;
-using BudgetBucketsAPI.Services;
+using BudgetBucketsAPI.Services.EntityServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BudgetBucketsAPI.Controllers
