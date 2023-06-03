@@ -35,6 +35,7 @@
     <None Remove="Models\Profile\" />
     <None Remove="Controllers\EntityControllers\" />
     <None Remove="Controllers\FunctionalControllers\" />
+    <None Remove="Models\Budget\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -47,5 +48,6 @@
     <Folder Include="Models\Profile\" />
     <Folder Include="Controllers\EntityControllers\" />
     <Folder Include="Controllers\FunctionalControllers\" />
+    <Folder Include="Models\Budget\" />
   </ItemGroup>
 </Project>

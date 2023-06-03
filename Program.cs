@@ -34,6 +34,7 @@ services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IAccountService, AccountService>();
 services.AddScoped<IProfileService, ProfileService>();
+services.AddScoped<IBudgetService, BudgetService>();
 
 var app = builder.Build();
 
