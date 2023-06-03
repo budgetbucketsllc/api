@@ -118,7 +118,7 @@ namespace BudgetBucketsAPI.Migrations
                     b.Property<decimal>("AmountPlanned")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<decimal>("AmountSpent")
+                    b.Property<decimal>("AmountReceived")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("BucketId")
@@ -148,7 +148,7 @@ namespace BudgetBucketsAPI.Migrations
                     b.Property<decimal>("AmountPlanned")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<decimal>("AmountSpent")
+                    b.Property<decimal>("AmountReceived")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("BudgetId")
@@ -199,9 +199,6 @@ namespace BudgetBucketsAPI.Migrations
                     b.Property<decimal>("AmountReceived")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<decimal>("AmountRemaining")
-                        .HasColumnType("decimal(65,30)");
-
                     b.Property<int>("IncomeId")
                         .HasColumnType("int");
 
@@ -246,27 +243,6 @@ namespace BudgetBucketsAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Profiles");
-                });
-
-            modelBuilder.Entity("BudgetBucketsAPI.Entities.Savings", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("AmountTotal")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Savings");
                 });
 
             modelBuilder.Entity("BudgetBucketsAPI.Entities.SplitTransaction", b =>

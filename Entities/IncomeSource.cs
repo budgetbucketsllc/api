@@ -11,7 +11,6 @@ namespace BudgetBucketsAPI.Entities
 		public string Name {get; set;} = String.Empty;
 		public decimal AmountPlanned {get; set;}
 		public decimal AmountReceived {get; set;}
-		public decimal AmountRemaining {get; set;}
 		public string Note {get; set;} = String.Empty;
 	}
 }

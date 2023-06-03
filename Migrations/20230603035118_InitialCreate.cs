@@ -24,7 +24,7 @@ namespace BudgetBucketsAPI.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountTotal = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
+                    AmountTotal = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -42,7 +42,7 @@ namespace BudgetBucketsAPI.Migrations
                     AccountId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountTotal = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
+                    AmountTotal = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Note = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -76,8 +76,8 @@ namespace BudgetBucketsAPI.Migrations
                     BudgetId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountPlanned = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
-                    AmountSpent = table.Column<decimal>(type: "decimal(65,2)", nullable: false)
+                    AmountPlanned = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AmountSpent = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,8 +95,8 @@ namespace BudgetBucketsAPI.Migrations
                     BucketId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountPlanned = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
-                    AmountSpent = table.Column<decimal>(type: "decimal(65,2)", nullable: false)
+                    AmountPlanned = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AmountReceived = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,8 +114,8 @@ namespace BudgetBucketsAPI.Migrations
                     AccountId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountPlanned = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
-                    AmountSpent = table.Column<decimal>(type: "decimal(65,2)", nullable: false)
+                    AmountPlanned = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AmountReceived = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,8 +132,8 @@ namespace BudgetBucketsAPI.Migrations
                     BudgetId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountPlanned = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
-                    AmountReceived = table.Column<decimal>(type: "decimal(65,2)", nullable: false)
+                    AmountPlanned = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AmountReceived = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -150,9 +150,8 @@ namespace BudgetBucketsAPI.Migrations
                     IncomeId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountPlanned = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
-                    AmountReceived = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
-                    AmountRemaining = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
+                    AmountPlanned = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AmountReceived = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Note = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -185,23 +184,6 @@ namespace BudgetBucketsAPI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Savings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountTotal = table.Column<decimal>(type: "decimal(65,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Savings", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "SplitTransactions",
                 columns: table => new
                 {
@@ -212,7 +194,7 @@ namespace BudgetBucketsAPI.Migrations
                     IncomeSourceId = table.Column<int>(type: "int", nullable: false),
                     BucketId = table.Column<int>(type: "int", nullable: false),
                     CategoryBucketId = table.Column<int>(type: "int", nullable: false),
-                    SplitAmount = table.Column<decimal>(type: "decimal(65,2)", nullable: false)
+                    SplitAmount = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -229,8 +211,8 @@ namespace BudgetBucketsAPI.Migrations
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AmountPlanned = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
-                    AmountSpent = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
+                    AmountPlanned = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    AmountSpent = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     IsFavorite = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Note = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -251,7 +233,7 @@ namespace BudgetBucketsAPI.Migrations
                     AccountId = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
                     Timeframe = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    TotalAmount = table.Column<decimal>(type: "decimal(65,2)", nullable: false),
+                    TotalAmount = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Merchant = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Note = table.Column<string>(type: "longtext", nullable: false)
@@ -313,9 +295,6 @@ namespace BudgetBucketsAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Profiles");
-
-            migrationBuilder.DropTable(
-                name: "Savings");
 
             migrationBuilder.DropTable(
                 name: "SplitTransactions");

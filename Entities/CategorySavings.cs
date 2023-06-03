@@ -12,9 +12,9 @@ namespace BudgetBucketsAPI.Entities
         public int AccountId {get; set;}
 		public string Name {get; set;} = String.Empty;
 		public decimal AmountPlanned {get; set;}
-		public decimal AmountSpent {get; set;}
+		public decimal AmountReceived {get; set;}
 		[NotMapped]
-		public decimal AmountRemaining {get; set;}
+		public decimal LeftToReceive {get; set;}
 	}
 }
 
