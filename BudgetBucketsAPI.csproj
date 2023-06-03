@@ -32,6 +32,10 @@
     <None Remove="Services\EntityServices\" />
     <None Remove="Services\FunctionalServices\" />
     <None Remove="Models\Account\" />
+    <None Remove="Models\Profile\" />
+    <None Remove="Controllers\EntityControllers\" />
+    <None Remove="Controllers\FunctionalControllers\" />
+    <None Remove="Models\Budget\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -41,5 +45,9 @@
     <Folder Include="Services\EntityServices\" />
     <Folder Include="Services\FunctionalServices\" />
     <Folder Include="Models\Account\" />
+    <Folder Include="Models\Profile\" />
+    <Folder Include="Controllers\EntityControllers\" />
+    <Folder Include="Controllers\FunctionalControllers\" />
+    <Folder Include="Models\Budget\" />
   </ItemGroup>
 </Project>

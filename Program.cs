@@ -1,5 +1,5 @@
 ﻿using BudgetBucketsAPI.Helpers;
-using BudgetBucketsAPI.Services;
+using BudgetBucketsAPI.Services.EntityServices;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 using System.Text.Json.Serialization;
@@ -33,6 +33,8 @@ services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // configure DI for application services
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IAccountService, AccountService>();
+services.AddScoped<IProfileService, ProfileService>();
+services.AddScoped<IBudgetService, BudgetService>();
 
 var app = builder.Build();
 
