@@ -12,7 +12,7 @@ namespace BudgetBucketsAPI.Entities
 		public decimal AmountPlanned {get; set;}
 		public decimal AmountReceived {get; set;}
 		[NotMapped]
-		public decimal AmountRemaining {get; set;}
+		public decimal LeftToReceive {get; set;}
 	}
 }
 

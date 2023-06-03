@@ -29,7 +29,6 @@ namespace BudgetBucketsAPI.Helpers
         public DbSet<Income> Incomes {get; set;}
         public DbSet<IncomeSource> IncomeSources {get; set;}
         public DbSet<Profile> Profiles {get; set;}
-        public DbSet<Savings> Savings {get; set;}
         public DbSet<SplitTransaction> SplitTransactions {get; set;}
         public DbSet<Subcategory> Subcategories {get; set;}
         public DbSet<Transaction> Transactions {get; set;}

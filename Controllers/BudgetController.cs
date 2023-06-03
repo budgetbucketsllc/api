@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using BudgetBucketsAPI.Services.EntityServices;
 using Microsoft.AspNetCore.Mvc;
 
