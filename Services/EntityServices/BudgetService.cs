@@ -56,6 +56,13 @@ namespace BudgetBucketsAPI.Services.EntityServices
             return getBudgetsByUserId(userId);
         }
 
+        public Budget GetUserBudgetForDate(int userId, DateOnly date)
+        {
+            List<Budget> budgets = getBudgetsByUserId(userId);
+            Budget budget = (Budget) budgets.Where(b => b.Timeframe == date);
+            return budget;
+        }
+
         public Budget GetById(int id)
         {
             return getBudget(id);
