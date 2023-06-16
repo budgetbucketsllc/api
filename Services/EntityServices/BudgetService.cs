@@ -11,6 +11,7 @@ namespace BudgetBucketsAPI.Services.EntityServices
 		IEnumerable<Budget> GetAll();
 		Budget GetById(int id);
 		List<Budget> GetAllBudgetsByUserId(int userId);
+        Budget GetUserBudgetForDate(int userId, DateOnly date);
 		void Create(CreateRequestBudget model, int userId);
 		void Update(int userId, int id, UpdateRequestBudget model);
 		void Delete(int id);

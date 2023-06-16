@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using BudgetBucketsAPI.Models.Budget;
 using BudgetBucketsAPI.Services.EntityServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,6 +39,32 @@ namespace BudgetBucketsAPI.Controllers
 		{
 			var budgets = _budgetService.GetAllBudgetsByUserId(userid);
 			return Ok(budgets);
+		}
+
+		[HttpGet("userid/{userid}/{date}")]
+		public IActionResult GetUserBudgetByDate(int userid, DateOnly date)
+		{
+			var budget = _budgetService.GetUserBudgetForDate(userid, date);
+			return Ok(budget);
+		}
+
+		[HttpPost]
+		public IActionResult Create(CreateRequestBudget model, int userid) {
+			_budgetService.Create(model, userid);
+			return Ok(new {message = "Budget created for the month of {model.Timeframe}"});
+		}
+
+		[HttpPatch("update/{userid}/{id}")]
+		public IActionResult Update(int userid, int id, UpdateRequestBudget model) {
+			_budgetService.Update(userid, id, model);
+			return Ok(new {message = "Budget updated"});
+		}
+
+		[HttpDelete("{id}")]
+		public IActionResult Delete(int id)
+		{
+			_budgetService.Delete(id);
+			return Ok(new {message = "Budget deleted"});
 		}
 
 	}
