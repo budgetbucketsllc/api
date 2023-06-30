@@ -51,7 +51,7 @@ namespace BudgetBucketsAPI.Controllers
 		[HttpPost]
 		public IActionResult Create(CreateRequestBudget model, int userid) {
 			_budgetService.Create(model, userid);
-			return Ok(new {message = "Budget created for the month of {model.Timeframe}"});
+			return Ok(new {message = $"Budget created for the month of {model.Timeframe.ToString("MMMM")}"});
 		}
 
 		[HttpPatch("update/{userid}/{id}")]

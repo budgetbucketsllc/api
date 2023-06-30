@@ -91,7 +91,7 @@ namespace BudgetBucketsAPI.Services.EntityServices
         private Budget getBudget(int id)
         {
             Budget? budget = _context.Budgets.Find(id);
-            if (budget == null) throw new KeyNotFoundException("Budget not found)");
+            if (budget == null) throw new KeyNotFoundException("Budget not found");
             return budget;
         }
     }
