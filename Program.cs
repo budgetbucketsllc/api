@@ -35,6 +35,7 @@ services.AddScoped<IUserService, UserService>();
 services.AddScoped<IAccountService, AccountService>();
 services.AddScoped<IProfileService, ProfileService>();
 services.AddScoped<IBudgetService, BudgetService>();
+services.AddScoped<IBucketService, BucketService>();
 
 var app = builder.Build();
 

@@ -47,8 +47,12 @@ namespace BudgetBucketsAPI.Services.EntityServices
 
         public void Create(CreateRequestBucket model, int accountId)
         {
+            if (checkIfNotSavingsAccount(accountId) == true ) throw new InvalidDataException("Buckets can only be created for Savings accounts");
+
             Bucket bucket = _mapper.Map<Bucket>(model);
             bucket.AccountId = accountId;
+
+            if (checkOverLimit(bucket.AmountTotal, accountId) == false) throw new InvalidDataException("Amount of bucket is over remaining unsorted account total");
 
             _context.Buckets.Add(bucket);
 
@@ -57,11 +61,15 @@ namespace BudgetBucketsAPI.Services.EntityServices
 
         public void Update(UpdateRequestBucket model, int id, int accountId)
         {
+            if (checkIfNotSavingsAccount(accountId) == true ) throw new InvalidDataException("Buckets can only be created for Savings accounts");
+            
             Bucket bucket = getBucket(id);
 
             _mapper.Map(model, bucket);
             bucket.AccountId = accountId;
 
+            if (checkOverLimit(bucket.AmountTotal, accountId) == false) throw new InvalidDataException("Amount of bucket is over remaining unsorted account total");
+            
             _context.Buckets.Update(bucket);
 
             _context.SaveChanges();
@@ -72,6 +80,23 @@ namespace BudgetBucketsAPI.Services.EntityServices
             Bucket bucket = getBucket(id);
             _context.Buckets.Remove(bucket);
             _context.SaveChanges();
+        }
+
+        private Boolean checkIfNotSavingsAccount(int accountId) {
+            return _context.Accounts.Find(accountId)?.Type != AccountType.Savings;
+        }
+
+        private Boolean checkOverLimit(decimal amount, int accountId) {
+            decimal? accountAmount = _context.Accounts.Find(accountId)?.AmountTotal;
+            decimal? amountUsed = getBucketsByAccountId(accountId).Select(a => accountAmount).Sum();
+            decimal? accountRemaining = accountAmount - amountUsed;
+            if (accountRemaining == null) {
+                return false;
+            }
+            if (amount > accountRemaining) {
+                return false;
+            }
+            return true;
         }
 
         private List<Bucket> getBucketsByAccountId(int accountId)
